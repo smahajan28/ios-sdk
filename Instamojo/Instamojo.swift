@@ -59,15 +59,14 @@ public class Instamojo: NSObject {
      *
      * @param order Order
      */
-    public class func invokePaymentOptionsView(order: Order, onViewController viewController: UIViewController) {
+    public class func invokePaymentOptionsView(order: Order, onViewController vc: UIViewController) {
         self.resetDefaults()
         let storyBoard: UIStoryboard = Constants.getStoryboardInstance()
         if let viewController: PaymentOptionsView = storyBoard.instantiateViewController(withIdentifier: Constants.PaymentOptionsViewController) as? PaymentOptionsView {
             viewController.order = order
             
-            if viewController is UINavigationController {
-                let navController: UINavigationController? = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)
-                navController?.pushViewController(viewController, animated: true)
+            if let navContorller = vc.navigationController {
+                navContorller.pushViewController(viewController, animated: true)
             }
             else {
                 print("error")
