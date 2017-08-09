@@ -13,7 +13,7 @@ public class NetBankingOptions: NSObject {
     public var url: String!
     public var banks: [NetBankingBanks]!
 
-    init(url: String, banks: [NetBankingBanks]) {
+    public init(url: String, banks: [NetBankingBanks]) {
         self.url = url
         self.banks = banks
     }
